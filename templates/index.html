@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Main Page</title>
+    <style>
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            text-align: center;
+            text-decoration: none;
+            outline: none;
+            color: #fff;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 15px;
+            box-shadow: 0 9px #999;
+        }
+
+        .button:hover {background-color: #3e8e41}
+
+        .button:active {
+            background-color: #3e8e41;
+            box-shadow: 0 5px #666;
+            transform: translateY(4px);
+        }
+    </style>
+</head>
+<body>
+    <h1>Welcome to Task 1 app</h1>
+    <div>
+        <a href="{{ url_for('factories_page') }}"><button class="button">Factories</button></a>
+        <a href="{{ url_for('sectors_page') }}"><button class="button">Sectors</button></a>
+        <a href="{{ url_for('eqs_page') }}"><button class="button">Equipment</button></a>
+    </div>
+</body>
+</html>

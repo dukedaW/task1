@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Equipment</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-5">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h1>Add Equipment</h1>
+            <!-- Back to Main Page Button -->
+            <a href="{{ url_for('index') }}" class="btn btn-outline-secondary">Back to Main Page</a>
+        </div>
+
+        <form method="POST" class="mb-5">
+            {{ form.hidden_tag() }}
+            <div class="form-group">
+                {{ form.name.label(class="form-label") }}
+                {{ form.name(class="form-control", size=32) }}
+                {% for error in form.name.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.sec1.label(class="form-label") }}
+                {{ form.sec1(class="form-control", size=32) }}
+                {% for error in form.sec1.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+            <div class="form-group">
+                {{ form.sec2.label(class="form-label") }}
+                {{ form.sec2(class="form-control", size=32) }}
+                {% for error in form.sec2.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-group">
+                {{ form.sec3.label(class="form-label") }}
+                {{ form.sec3(class="form-control", size=32) }}
+                {% for error in form.sec3.errors %}
+                    <div class="text-danger">{{ error }}</div>
+                {% endfor %}
+            </div>
+            {{ form.submit(class="btn btn-primary") }}
+        </form>
+
+        <h2>Equipment</h2>
+        <ul class="list-group">
+            {% for eq in eqs %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>
+                        <!-- Make the equipment name clickable -->
+                        <a href="{{ url_for('equipment_detail', eq_id=eq.eq_id) }}">
+                            Id: {{ eq.eq_id }}, Name: {{ eq.name }}
+                        </a>
+                    </span>
+                    <span>
+                        <!-- Delete Form -->
+                        <form action="{{ url_for('delete_eq', eq_id=eq.eq_id) }}" method="post" style="display:inline;">
+                            <!-- CSRF token (if applicable) -->
+                            <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+                        </form>
+                    </span>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
