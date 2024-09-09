@@ -3,8 +3,6 @@ from flask_wtf import FlaskForm, CSRFProtect
 from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 from flask import render_template, jsonify, Blueprint, redirect, url_for, request
-# from sector import Sector
-# from equipment import SecToEq, Equipment
 
 
 class Factory(db.Model):

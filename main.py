@@ -4,6 +4,7 @@ import factory
 import index
 import sector
 import equipment
+import details
 
 
 if __name__ == '__main__':
